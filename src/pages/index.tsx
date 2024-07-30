@@ -7,9 +7,5 @@ export default function Home() {
 }
 
 Home.getLayout = (page: ReactNode) => {
-  return (
-    <Layout withBottomNav headerMode={"home"}>
-      {page}
-    </Layout>
-  );
+  return <Layout withBottomNav>{page}</Layout>;
 };

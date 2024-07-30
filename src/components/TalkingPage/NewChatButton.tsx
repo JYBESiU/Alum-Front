@@ -6,10 +6,17 @@ import {
   primaryColor,
 } from "@/utils/colors";
 import { Box, Flex, Text } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 
 export interface NewChatButtonProps {}
 
 function NewChatButton({}: NewChatButtonProps) {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push({ pathname: "/newChat" });
+  };
+
   return (
     <Box
       w={"100%"}
@@ -22,6 +29,7 @@ function NewChatButton({}: NewChatButtonProps) {
       borderColor={cardStroke}
       boxShadow={cardShadow}
       borderRadius={"20px"}
+      onClick={handleClick}
     >
       <Flex align={"center"} gap={"8px"} mb={"8px"}>
         <Text

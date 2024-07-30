@@ -7,3 +7,10 @@ export { default as UserColorIcon } from "./user_color.svg";
 
 export { default as NextArrowIcon } from "./next_arrow.svg";
 export { default as DialogIcon } from "./dialog.svg";
+
+export { default as ChatIcon } from "./chat.svg";
+export { default as ChatColorIcon } from "./chat_color.svg";
+export { default as BotEditIcon } from "./bot_edit.svg";
+export { default as BotEditColorIcon } from "./bot_edit_color.svg";
+export { default as UserEditIcon } from "./user_edit.svg";
+export { default as UserEditColorIcon } from "./user_edit_color.svg";
