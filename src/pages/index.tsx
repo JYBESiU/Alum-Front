@@ -1,5 +1,5 @@
-import TalkingPage from "@/components/TalkingPage";
 import { Layout } from "@/components";
+import TalkingPage from "@/components/TalkingPage";
 import { ReactNode } from "react";
 
 export default function Home() {

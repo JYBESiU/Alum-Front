@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import {
   bottomNavBG,
   bottomNavColor,
+  cardStroke,
   primaryColor,
 } from "@/utils/colors";
 import {
@@ -34,6 +35,8 @@ function BottomNavigation({}: BottomNavigationProps) {
       bg={bottomNavBG}
       pt={"8px"}
       height="96px"
+      borderTop={"1px solid"}
+      borderColor={cardStroke}
     >
       <Flex
         h={"100%"}

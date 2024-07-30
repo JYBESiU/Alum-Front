@@ -16,6 +16,7 @@ const GlobalStyles = css`
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background-color: #f4f4f4;
   }
 
   div[style] {
