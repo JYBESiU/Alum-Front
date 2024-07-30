@@ -5,6 +5,8 @@ import { Global, css } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
+import axios from "axios";
+import { apiEndpoint } from "@/utils";
 
 const GlobalStyles = css`
   body {
@@ -46,3 +48,5 @@ export default function App({
     </ChakraProvider>
   );
 }
+
+axios.defaults.baseURL = apiEndpoint;

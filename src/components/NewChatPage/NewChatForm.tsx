@@ -8,7 +8,6 @@ import {
 } from "@/svg";
 import {
   cardShadow,
-  cardStroke,
   fontBlack,
   placeholderColor,
   primaryColor,
@@ -18,8 +17,12 @@ import {
   Button,
   Flex,
   Input,
+  Spinner,
   Textarea,
 } from "@chakra-ui/react";
+import axios from "axios";
+import Router from "next/router";
+
 import { ChangeEvent, useState } from "react";
 
 export interface NewChatFormProps {}
@@ -29,6 +32,8 @@ function NewChatForm({}: NewChatFormProps) {
   const [aiRole, setAiRole] = useState<string>("");
   const [chatSubject, setChatSubject] =
     useState<string>("");
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const isDisabled =
     myRole === "" || aiRole === "" || chatSubject === "";
@@ -51,7 +56,24 @@ function NewChatForm({}: NewChatFormProps) {
     setChatSubject(e.target.value);
   };
 
-  const handleStartClick = () => {};
+  const handleStartClick = async () => {
+    if (isLoading) return;
+
+    setIsLoading(true);
+
+    const payload = {
+      myrole: myRole,
+      airole: aiRole,
+      chatsubject: chatSubject,
+    };
+    const { data } = await axios.post(
+      "/chat/entry",
+      payload
+    );
+    Router.push(`/chatRoom/${data.chatroomId}`);
+
+    setIsLoading(false);
+  };
 
   return (
     <Box px={"27px"}>
@@ -133,8 +155,6 @@ function NewChatForm({}: NewChatFormProps) {
           direction={"row"}
           h={"124px"}
           align={"top"}
-          borderBottom={"1px solid"}
-          borderColor={"#e3e3e3"}
         >
           <Box
             position={"absolute"}
@@ -174,8 +194,13 @@ function NewChatForm({}: NewChatFormProps) {
         bg={primaryColor}
         borderRadius={"16px"}
         color={"white"}
+        onClick={handleStartClick}
       >
-        대화 시작
+        {isLoading ? (
+          <Spinner color="white" />
+        ) : (
+          "대화 시작"
+        )}
       </Button>
     </Box>
   );
