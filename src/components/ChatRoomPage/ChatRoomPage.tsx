@@ -1,15 +1,16 @@
 import { useRecorder } from "@/hooks";
+import { Box } from "@chakra-ui/react";
 
-export interface ChatRoomProps {
+export interface ChatRoomPageProps {
   // chatRoomId?: string;
 }
 
-function ChatRoom({}: ChatRoomProps) {
+function ChatRoomPage({}: ChatRoomPageProps) {
   const { isRecording, startRecording, stopRecording } =
     useRecorder();
 
   return (
-    <div>
+    <Box>
       <button
         onClick={
           isRecording ? stopRecording : startRecording
@@ -17,8 +18,8 @@ function ChatRoom({}: ChatRoomProps) {
       >
         {isRecording ? "Stop Recording" : "Start Recording"}
       </button>
-    </div>
+    </Box>
   );
 }
 
-export default ChatRoom;
+export default ChatRoomPage;

@@ -13,7 +13,7 @@ const params = {
     CORSRules: [
       {
         AllowedHeaders: ["*"],
-        AllowedMethods: ["GET", "PUT"],
+        AllowedMethods: ["GET", "PUT", "POST", "DELETE"],
         AllowedOrigins: ["*"],
         MaxAgeSeconds: 3000,
       },
@@ -25,10 +25,11 @@ export const S3 = new AWS.S3({
   endpoint,
   region,
   credentials: {
-    accessKeyId: process.env.ACCESS_KEY_ID!,
-    secretAccessKey: process.env.SECRET_KEY_ID!,
+    accessKeyId: process.env.NEXT_PUBLIC_ACCESS_KEY_ID!,
+    secretAccessKey: process.env.NEXT_PUBLIC_SECRET_KEY_ID!,
   },
 });
+console.log(process.env.NEXT_PUBLIC_ACCESS_KEY_ID);
 
 S3.putBucketCors(params);
 
