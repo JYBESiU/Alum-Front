@@ -14,7 +14,7 @@ function NewChatButton({}: NewChatButtonProps) {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push({ pathname: "/newChat" });
+    router.push("/newChat");
   };
 
   return (
