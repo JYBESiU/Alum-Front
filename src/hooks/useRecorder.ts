@@ -20,7 +20,7 @@ export const useRecorder = () => {
       audioChunksRef.current.push(event.data);
     };
 
-    mediaRecorderRef.current.onstop = () => {
+    mediaRecorderRef.current.onstop = async () => {
       const audioBlob = new Blob(audioChunksRef.current, {
         type: "audio/wav",
       });
@@ -32,7 +32,7 @@ export const useRecorder = () => {
           type: "audio/mp3",
         }
       );
-      uploadToS3(file, file.name);
+      await uploadToS3(file, file.name);
       audioChunksRef.current = [];
     };
 

@@ -6,13 +6,11 @@ import BottomNav from "./BottomNav";
 export interface LayoutProps {
   children: ReactNode;
   withBottomNav?: boolean;
-  headerMode?: "home" | "gallery";
 }
 
 function Layout({
   children,
   withBottomNav = false,
-  headerMode,
 }: LayoutProps) {
   return (
     <Flex

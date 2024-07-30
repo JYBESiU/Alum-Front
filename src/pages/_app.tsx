@@ -5,6 +5,10 @@ import { Global, css } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { ReactElement, ReactNode } from "react";
+import axios from "axios";
+import { apiEndpoint } from "@/utils";
+import { SWRConfig } from "swr";
+import { customFetcher } from "@/utils/fetcher";
 
 const GlobalStyles = css`
   body {
@@ -41,8 +45,18 @@ export default function App({
 
   return (
     <ChakraProvider>
-      {getLayout(<Page {...pageProps} />)}
-      <Global styles={GlobalStyles} />
+      <SWRConfig
+        value={{
+          fetcher: customFetcher,
+          revalidateOnFocus: false,
+          errorRetryCount: 2,
+        }}
+      >
+        {getLayout(<Page {...pageProps} />)}
+        <Global styles={GlobalStyles} />
+      </SWRConfig>
     </ChakraProvider>
   );
 }
+
+axios.defaults.baseURL = apiEndpoint;
