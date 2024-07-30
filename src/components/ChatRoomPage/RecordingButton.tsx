@@ -1,7 +1,7 @@
 import { useRecorder } from "@/hooks";
 import { MicBigColorIcon, MicBigIcon } from "@/svg";
-import { chatFontColor } from "@/utils/colors";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { recordingBG } from "@/utils/colors";
+import { Flex } from "@chakra-ui/react";
 
 export interface RecordingButtonProps {}
 
@@ -10,32 +10,30 @@ function RecordingButton({}: RecordingButtonProps) {
     useRecorder();
 
   return (
-    <>
-      <Box
-        position={"absolute"}
-        bottom={"40px"}
-        left={"50%"}
-        transform={"translateX(-50%)"}
+    <Flex
+      w={"100%"}
+      h={"124px"}
+      pt={"28px"}
+      align={"start"}
+      justify={"center"}
+      direction={"row"}
+      bg={recordingBG}
+    >
+      <Flex
+        w={"56px"}
+        h={"56px"}
+        bg={"white"}
+        borderRadius={"50%"}
+        onClick={
+          isRecording ? stopRecording : startRecording
+        }
+        align={"center"}
+        justify={"center"}
       >
-        <Flex
-          w={"56px"}
-          h={"56px"}
-          bg={"white"}
-          borderRadius={"50%"}
-          onClick={
-            isRecording ? stopRecording : startRecording
-          }
-          align={"center"}
-          justify={"center"}
-        >
-          {isRecording ? (
-            <MicBigColorIcon />
-          ) : (
-            <MicBigIcon />
-          )}
-        </Flex>
-      </Box>
-      {isRecording && (
+        {isRecording ? <MicBigColorIcon /> : <MicBigIcon />}
+      </Flex>
+
+      {/* {isRecording && (
         <Text
           position={"absolute"}
           fontSize={"15px"}
@@ -46,8 +44,8 @@ function RecordingButton({}: RecordingButtonProps) {
         >
           대답 듣는 중...
         </Text>
-      )}
-    </>
+      )} */}
+    </Flex>
   );
 }
 
