@@ -7,7 +7,7 @@ import {
 import { Box, Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
 import { ReactNode } from "react";
-import ChatLogButton from "./ChatLogButton";
+import ChatListButton from "./ChatListButton";
 import NewChatButton from "./NewChatButton";
 
 export interface TalkingPageProps {}
@@ -82,7 +82,7 @@ function TalkingPage({}: TalkingPageProps) {
         </Card>
       </Flex>
 
-      <ChatLogButton />
+      <ChatListButton />
     </Box>
   );
 }

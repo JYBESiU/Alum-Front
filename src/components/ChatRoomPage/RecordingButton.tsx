@@ -28,6 +28,9 @@ function RecordingButton({}: RecordingButtonProps) {
           isRecording ? stopRecording : startRecording
         }
         align={"center"}
+        {...(isRecording && {
+          boxShadow: "0px 0px 15px 0px #FF6B00",
+        })}
         justify={"center"}
       >
         {isRecording ? <MicBigColorIcon /> : <MicBigIcon />}
