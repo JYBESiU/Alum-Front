@@ -66,11 +66,16 @@ function NewChatForm({}: NewChatFormProps) {
       airole: aiRole,
       chatsubject: chatSubject,
     };
-    const { data } = await axios.post(
-      "/chat/entry",
-      payload
-    );
-    Router.push(`/chatRoom/${data.chatroomId}`);
+    // const { data } = await axios.post(
+    //   "/chat/entry",
+    //   payload
+    // );
+    // Router.push(`/chatRoom/${data.chatroomId}`);
+
+    setTimeout(() => {
+      Router.push(`/chatRoom/1`);
+      setIsLoading(false);
+    }, 1000);
 
     setIsLoading(false);
   };
