@@ -6,6 +6,7 @@ export { default as UserIcon } from "./user.svg";
 export { default as UserColorIcon } from "./user_color.svg";
 
 export { default as NextArrowIcon } from "./next_arrow.svg";
+export { default as BackArrowIcon } from "./back_arrow.svg";
 export { default as DialogIcon } from "./dialog.svg";
 
 export { default as ChatIcon } from "./chat.svg";
