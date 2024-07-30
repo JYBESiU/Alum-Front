@@ -6,6 +6,7 @@ export { default as MicBigIcon } from "./mic_big.svg";
 export { default as MicBigColorIcon } from "./mic_big_color.svg";
 export { default as UserIcon } from "./user.svg";
 export { default as UserColorIcon } from "./user_color.svg";
+export { default as CloseIcon } from "./close.svg";
 
 export { default as NextArrowIcon } from "./next_arrow.svg";
 export { default as BackArrowIcon } from "./back_arrow.svg";
