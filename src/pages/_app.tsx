@@ -3,13 +3,13 @@ import type { AppProps } from "next/app";
 
 import { Global, css } from "@emotion/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { NextPage } from 'next';
-import { ReactElement ,ReactNode} from 'react';
+import { NextPage } from "next";
+import { ReactElement, ReactNode } from "react";
 
 const GlobalStyles = css`
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Pretendard Variable;
   }
 
   #__next {
@@ -24,7 +24,6 @@ const GlobalStyles = css`
   }
 `;
 
-
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
@@ -32,7 +31,6 @@ type NextPageWithLayout = NextPage & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
-
 
 export default function App({
   Component: Page,
@@ -47,4 +45,3 @@ export default function App({
     </ChakraProvider>
   );
 }
-

@@ -1,12 +1,18 @@
-import {
-  Box,
-  Button,
-  Center,
-  Flex,
-  Text,
-} from "@chakra-ui/react";
+import { Box, Flex, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import { bottomNavBG, primaryColor } from "@/utils/colors";
+import {
+  bottomNavBG,
+  bottomNavColor,
+  primaryColor,
+} from "@/utils/colors";
+import {
+  HeadPhoneColorIcon,
+  HeadPhoneIcon,
+  MicColorIcon,
+  MicIcon,
+  UserColorIcon,
+  UserIcon,
+} from "@/svg";
 
 export interface BottomNavigationProps {}
 
@@ -14,8 +20,9 @@ function BottomNavigation({}: BottomNavigationProps) {
   const router = useRouter();
   const { pathname, query } = router;
 
-  const isTalkingPage = pathname.includes("/");
+  const isTalkingPage = pathname.includes("/talking");
   const isListeningPage = pathname.includes("/listening");
+  const isProfilePage = pathname.includes("/profile");
 
   const navigateTo = (path: string) => () => {
     router.push({ pathname: path, query });
@@ -39,9 +46,17 @@ function BottomNavigation({}: BottomNavigationProps) {
           w={"40x"}
           flexDirection={"column"}
           align={"center"}
-          onClick={navigateTo("/")}
+          gap={"6px"}
+          onClick={navigateTo("/talking")}
         >
-          <Text fontSize={"12px"} color={primaryColor}>
+          {isTalkingPage ? <MicColorIcon /> : <MicIcon />}
+          <Text
+            fontWeight={500}
+            fontSize={"12px"}
+            color={
+              isTalkingPage ? primaryColor : bottomNavColor
+            }
+          >
             말하기
           </Text>
         </Flex>
@@ -51,9 +66,23 @@ function BottomNavigation({}: BottomNavigationProps) {
           w={"40x"}
           flexDirection={"column"}
           align={"center"}
+          gap={"6px"}
           onClick={navigateTo("/listening")}
         >
-          <Text fontSize={"12px"} color={primaryColor}>
+          {isListeningPage ? (
+            <HeadPhoneColorIcon />
+          ) : (
+            <HeadPhoneIcon />
+          )}
+          <Text
+            fontWeight={500}
+            fontSize={"12px"}
+            color={
+              isListeningPage
+                ? primaryColor
+                : bottomNavColor
+            }
+          >
             듣기
           </Text>
         </Flex>
@@ -63,9 +92,17 @@ function BottomNavigation({}: BottomNavigationProps) {
           w={"40x"}
           flexDirection={"column"}
           align={"center"}
+          gap={"6px"}
           onClick={navigateTo("/profile")}
         >
-          <Text fontSize={"12px"} color={primaryColor}>
+          {isProfilePage ? <UserColorIcon /> : <UserIcon />}
+          <Text
+            fontWeight={500}
+            fontSize={"12px"}
+            color={
+              isProfilePage ? primaryColor : bottomNavColor
+            }
+          >
             내정보
           </Text>
         </Flex>
