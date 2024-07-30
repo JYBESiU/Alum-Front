@@ -1,12 +1,14 @@
-import TalkingPage from "@/components/TalkingPage";
+import ProfilePage from "@/components/ProfilePage";
 import { Layout } from "@/components";
 import { ReactNode } from "react";
 
-export default function Home() {
-  return <TalkingPage />;
+function Profile() {
+  return <ProfilePage />;
 }
 
-Home.getLayout = (page: ReactNode) => {
+export default Profile;
+
+Profile.getLayout = (page: ReactNode) => {
   return (
     <Layout withBottomNav headerMode={"home"}>
       {page}
