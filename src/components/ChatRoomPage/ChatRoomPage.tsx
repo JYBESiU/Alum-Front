@@ -1,23 +1,22 @@
-import { useRecorder } from "@/hooks";
 import { Box } from "@chakra-ui/react";
+import RecordingButton from "./RecordingButton";
+import { useRouter } from "next/router";
 
-export interface ChatRoomPageProps {
-  // chatRoomId?: string;
-}
+export interface ChatRoomPageProps {}
 
 function ChatRoomPage({}: ChatRoomPageProps) {
-  const { isRecording, startRecording, stopRecording } =
-    useRecorder();
+  const router = useRouter();
+  const { query } = router;
+
+  const chatroomId = Number(query.chatRoomId);
 
   return (
-    <Box>
-      <button
-        onClick={
-          isRecording ? stopRecording : startRecording
-        }
-      >
-        {isRecording ? "Stop Recording" : "Start Recording"}
-      </button>
+    <Box
+      h={"100%"}
+      overflow={"hidden"}
+      position={"relative"}
+    >
+      <RecordingButton />
     </Box>
   );
 }
