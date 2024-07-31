@@ -5,10 +5,15 @@ import {
   fontGray,
 } from "@/utils/colors";
 import { Flex, Text } from "@chakra-ui/react";
+import Router from "next/router";
 
-export interface ChatLogButtonProps {}
+export interface ChatListButtonProps {}
 
-function ChatLogButton({}: ChatLogButtonProps) {
+function ChatListButton({}: ChatListButtonProps) {
+  const handleClick = () => {
+    Router.push("/chatList");
+  };
+
   return (
     <Flex
       direction={"row"}
@@ -24,6 +29,7 @@ function ChatLogButton({}: ChatLogButtonProps) {
       gap={"8px"}
       align={"center"}
       justify={"center"}
+      onClick={handleClick}
     >
       <DialogIcon />
       <Text
@@ -37,4 +43,4 @@ function ChatLogButton({}: ChatLogButtonProps) {
   );
 }
 
-export default ChatLogButton;
+export default ChatListButton;

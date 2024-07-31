@@ -6,11 +6,15 @@ export { default as MicBigIcon } from "./mic_big.svg";
 export { default as MicBigColorIcon } from "./mic_big_color.svg";
 export { default as UserIcon } from "./user.svg";
 export { default as UserColorIcon } from "./user_color.svg";
+export { default as CloseIcon } from "./close.svg";
 
 export { default as NextArrowIcon } from "./next_arrow.svg";
 export { default as BackArrowIcon } from "./back_arrow.svg";
 export { default as DialogIcon } from "./dialog.svg";
 export { default as VoiceIcon } from "./voice.svg";
+export { default as PlayIcon } from "./play.svg";
+export { default as PauseIcon } from "./pause.svg";
+export { default as HomeIcon } from "./home.svg";
 
 export { default as ChatIcon } from "./chat.svg";
 export { default as ChatColorIcon } from "./chat_color.svg";

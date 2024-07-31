@@ -3,7 +3,8 @@ import RecordingButton from "./RecordingButton";
 import { useRouter } from "next/router";
 import { useChatRoomMessage } from "@/hooks";
 import ChatMessage from "./ChatMessage";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { CloseIcon } from "@/svg";
 
 export interface ChatRoomPageProps {}
 
@@ -12,8 +13,6 @@ function ChatRoomPage({}: ChatRoomPageProps) {
   const { query } = router;
 
   const playerRef = useRef<HTMLAudioElement>(null);
-
-  useEffect(() => {}, []);
 
   const chatroomId = Number(query.chatRoomId);
 
@@ -27,6 +26,10 @@ function ChatRoomPage({}: ChatRoomPageProps) {
     playerRef.current.play();
   };
 
+  const handleClose = () => {
+    router.push("/talking");
+  };
+
   return (
     <Flex
       h={"100%"}
@@ -34,6 +37,14 @@ function ChatRoomPage({}: ChatRoomPageProps) {
       overflow={"hidden"}
       position={"relative"}
     >
+      <Box
+        position={"absolute"}
+        top={"40px"}
+        left={"30px"}
+        onClick={handleClose}
+      >
+        <CloseIcon />
+      </Box>
       <Box py={"40px"} textAlign={"center"}>
         <Text
           fontSize={"18px"}
