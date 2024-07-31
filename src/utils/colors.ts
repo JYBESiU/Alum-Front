@@ -10,3 +10,7 @@ export const recordingBG = "#d9d9d9";
 
 export const cardShadow =
   "0px 0px 4px 0px rgba(99, 99, 99, 0.50)";
+
+export const pinkColor = "#FE6A6A";
+export const blueColor = "#34A9FF";
+export const cyanColor = "#4FBDC4";
