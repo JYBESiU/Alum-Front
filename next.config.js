@@ -13,4 +13,12 @@ module.exports = withPWA({
     });
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:first/:second",
+        destination: `${process.env.NEXT_PUBLIC_API_ENDPOINT}/:first/:second`,
+      },
+    ];
+  },
 });

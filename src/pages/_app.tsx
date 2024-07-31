@@ -58,4 +58,4 @@ export default function App({
   );
 }
 
-axios.defaults.baseURL = apiEndpoint;
+axios.defaults.baseURL = "/api";
