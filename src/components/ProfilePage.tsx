@@ -12,10 +12,15 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react";
+import Router from "next/router";
 
 export interface ProfilePageProps {}
 
 function ProfilePage({}: ProfilePageProps) {
+  const handlePageMove = (path: string) => () => {
+    Router.push(`/profile/${path}`);
+  };
+
   return (
     <Box
       h={"100%"}
@@ -71,15 +76,28 @@ function ProfilePage({}: ProfilePageProps) {
       </Card>
 
       <Flex gap={"14px"} mb={"14px"}>
-        <Menu text={"오답 정리"} url={"/images/note.png"} />
-        <Menu text={"임무"} url={"/images/target.png"} />
+        <Menu
+          text={"오답 정리"}
+          url={"/images/note.png"}
+          onClick={handlePageMove("notes")}
+        />
+        <Menu
+          text={"임무"}
+          url={"/images/target.png"}
+          onClick={handlePageMove("goals")}
+        />
       </Flex>
       <Flex gap={"14px"}>
         <Menu
           text={"실력 분석"}
           url={"/images/performance.png"}
+          onClick={handlePageMove("performance")}
         />
-        <Menu text={"시험"} url={"/images/books.png"} />
+        <Menu
+          text={"시험"}
+          url={"/images/books.png"}
+          onClick={handlePageMove("tests")}
+        />
       </Flex>
     </Box>
   );
@@ -107,9 +125,10 @@ const Card = ({ children, ...props }: CenterProps) => {
 const Menu = ({
   text,
   url,
+  ...rest
 }: { text: string; url: string } & CenterProps) => {
   return (
-    <Card h={"100px"}>
+    <Card h={"100px"} {...rest}>
       <Box
         w={"64px"}
         h={"64px"}
