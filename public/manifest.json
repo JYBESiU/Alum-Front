@@ -4,8 +4,8 @@
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
-  "name": "Alum",
-  "short_name": "Alum",
+  "name": "알음",
+  "short_name": "알음",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
