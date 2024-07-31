@@ -97,7 +97,7 @@ function QuizModal({
         정답입니다!
       </Text>
       <Text fontSize={"14px"} color={fontGray} mb={"40px"}>
-        다른 뉴스의 퀴즈도 풀어보세요
+        다른 뉴스의 문제도 풀어보세요
       </Text>
       <Flex
         w={"100%"}

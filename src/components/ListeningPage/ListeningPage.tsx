@@ -42,7 +42,7 @@ function ListeningPage({}: ListeningPageProps) {
           mb={"28px"}
           color={fontGray}
         >
-          뉴스 기사를 듣고 기사 내용에 관한 퀴즈를 풀어봐요.
+          뉴스 기사를 듣고 기사 내용에 관한 문제를 풀어봐요.
         </Text>
 
         <Box
@@ -71,7 +71,7 @@ function ListeningPage({}: ListeningPageProps) {
             color={"white"}
           >
             카테고리에 해당하는 랜덤 기사를 듣고 기사 내용에
-            관한 퀴즈를 풀어봐요.
+            관한 문제를 풀어봐요.
           </Text>
         </Box>
 

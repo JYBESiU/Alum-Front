@@ -22,7 +22,7 @@ function QuizButton({ onClick }: QuizButtonProps) {
         fontWeight={600}
         color={primaryColor}
       >
-        퀴즈 풀기
+        문제 풀기
       </Text>
     </Center>
   );
