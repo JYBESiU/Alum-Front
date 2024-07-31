@@ -26,9 +26,9 @@ import { useState } from "react";
 export interface QuizModalProps {
   isOpen: boolean;
   onClose: () => void;
-  question: string;
-  choices: string[];
-  answer: string;
+  question?: string;
+  choices: (string | undefined)[];
+  answer?: string;
 }
 
 function QuizModal({
@@ -38,12 +38,14 @@ function QuizModal({
   choices,
   answer,
 }: QuizModalProps) {
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState<
+    string | undefined
+  >(undefined);
   const [status, setStatus] = useState<
     "choice" | "correct" | "wrong"
   >("choice");
 
-  const handleOptionClick = (text: string) => () => {
+  const handleOptionClick = (text?: string) => () => {
     setSelected(text);
   };
 
@@ -234,7 +236,7 @@ const Option = ({
   text,
   isSelected,
   ...rest
-}: { text: string; isSelected: boolean } & FlexProps) => {
+}: { text?: string; isSelected: boolean } & FlexProps) => {
   return (
     <Flex
       pl="16px"

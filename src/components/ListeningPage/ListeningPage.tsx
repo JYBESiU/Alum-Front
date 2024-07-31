@@ -1,4 +1,4 @@
-import { useRecentNews } from "@/hooks/useRecentNews";
+import { useNews } from "@/hooks/useNews";
 import {
   fontBlack,
   fontGray,
@@ -7,11 +7,16 @@ import {
 import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import NewsCard from "./NewsCard";
+import Router from "next/router";
 
 export interface ListeningPageProps {}
 
 function ListeningPage({}: ListeningPageProps) {
-  const { news } = useRecentNews();
+  const { news } = useNews();
+
+  const handleClick = (n: number) => () => {
+    Router.push(`/news/${n}`);
+  };
 
   return (
     <Box
@@ -80,20 +85,20 @@ function ListeningPage({}: ListeningPageProps) {
           gap={"14px"}
           mb={"14px"}
         >
-          <Chip>정치</Chip>
-          <Chip>경제</Chip>
-          <Chip>사회</Chip>
-          <Chip>문화</Chip>
+          <Chip onClick={handleClick(1)}>정치</Chip>
+          <Chip onClick={handleClick(2)}>경제</Chip>
+          <Chip onClick={handleClick(3)}>사회</Chip>
+          <Chip onClick={handleClick(4)}>문화</Chip>
         </Flex>
         <Flex
           justify={"space-between"}
           gap={"14px"}
           mb={"36px"}
         >
-          <Chip>IT</Chip>
-          <Chip>과학</Chip>
-          <Chip>생활</Chip>
-          <Chip>세계</Chip>
+          <Chip onClick={handleClick(5)}>IT</Chip>
+          <Chip onClick={handleClick(6)}>과학</Chip>
+          <Chip onClick={handleClick(7)}>생활</Chip>
+          <Chip onClick={handleClick(8)}>세계</Chip>
         </Flex>
 
         <Text
@@ -106,7 +111,7 @@ function ListeningPage({}: ListeningPageProps) {
           오늘의 추천뉴스
         </Text>
 
-        {news.map((news) => (
+        {news?.map((news) => (
           <NewsCard key={news.id} news={news} />
         ))}
       </Box>

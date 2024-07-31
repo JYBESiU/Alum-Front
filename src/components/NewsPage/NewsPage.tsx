@@ -1,4 +1,3 @@
-import { useNews } from "@/hooks";
 import { CloseIcon } from "@/svg";
 import {
   Box,
@@ -12,6 +11,7 @@ import { useState } from "react";
 import QuizButton from "./QuizButton";
 import QuizModal from "./QuizModal";
 import BackButton from "../BackButton";
+import { useNews } from "@/hooks/useNews";
 
 export interface NewsPageProps {}
 
@@ -20,7 +20,8 @@ function NewsPage({}: NewsPageProps) {
   const { query } = router;
   const newsId = Number(query.newsId);
 
-  const { news } = useNews(newsId);
+  const { news: newslist } = useNews(newsId);
+  const news = newslist?.[0];
 
   const [isQuizShow, setIsQuizShow] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -51,7 +52,7 @@ function NewsPage({}: NewsPageProps) {
           whiteSpace={"nowrap"}
           textOverflow={"ellipsis"}
         >
-          {news.title}
+          {news?.title}
         </Text>
       </Center>
 
@@ -61,7 +62,7 @@ function NewsPage({}: NewsPageProps) {
           height={"234px"}
           borderRadius={"15px 15px 0 0"}
           backgroundSize={"cover"}
-          backgroundImage={news.imageUrl}
+          backgroundImage={news?.imageUrl}
         />
         <Box
           width={"100%"}
@@ -71,13 +72,13 @@ function NewsPage({}: NewsPageProps) {
           borderRadius={"0 0 15px 15px"}
         >
           <Text fontSize={"14px"} textAlign={"center"}>
-            {news.summary}
+            {news?.summary}
           </Text>
         </Box>
       </Box>
 
       <VoicePalyer
-        voiceUrl={news.voiceUrl}
+        voiceUrl={news?.voiceUrl || ""}
         setIsQuizShow={setIsQuizShow}
       />
 
@@ -89,9 +90,14 @@ function NewsPage({}: NewsPageProps) {
         <QuizModal
           isOpen={isOpen}
           onClose={onClose}
-          question={news.question}
-          choices={news.choices}
-          answer={news.answer}
+          question={news?.question}
+          choices={[
+            news?.choice1,
+            news?.choice2,
+            news?.choice3,
+            news?.choice4,
+          ]}
+          answer={news?.answer}
         />
       )}
     </Box>
