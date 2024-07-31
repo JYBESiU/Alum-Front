@@ -4,6 +4,7 @@ import { Box, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import VoicePalyer from "./VoicePalyer";
 import { useState } from "react";
+import QuizButton from "./QuizButton";
 
 export interface NewsPageProps {}
 
@@ -65,6 +66,8 @@ function NewsPage({}: NewsPageProps) {
         voiceUrl={news.voiceUrl}
         setIsQuizShow={setIsQuizShow}
       />
+
+      {isQuizShow && <QuizButton />}
     </Box>
   );
 }

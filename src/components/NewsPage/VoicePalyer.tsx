@@ -4,9 +4,7 @@ import { Box } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import {
   Dispatch,
-  ReactEventHandler,
   SetStateAction,
-  SyntheticEvent,
   useEffect,
   useRef,
   useState,
@@ -30,8 +28,10 @@ function VoicePalyer({
   useEffect(() => {
     if (progress > 60) {
       setIsQuizShow(true);
+    } else {
+      setIsQuizShow(false);
     }
-  }, [progress]);
+  }, [progress, setIsQuizShow]);
 
   useEffect(() => {
     var audio = new Audio();
@@ -120,6 +120,7 @@ const AudioPlayerContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 52px;
 `;
 
 const ProgressBar = styled.div`
