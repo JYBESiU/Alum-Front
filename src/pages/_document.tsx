@@ -9,6 +9,10 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <meta
+          http-equiv="Content-Security-Policy"
+          content="upgrade-insecure-requests"
+        ></meta>
         <link rel="manifest" href="/manifest.json" />
         <link
           rel="stylesheet"
