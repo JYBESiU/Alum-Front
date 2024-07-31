@@ -5,6 +5,7 @@ import { useChatRoomMessage } from "@/hooks";
 import ChatMessage from "./ChatMessage";
 import { useRef } from "react";
 import { CloseIcon } from "@/svg";
+import BackButton from "../BackButton";
 
 export interface ChatRoomPageProps {}
 
@@ -36,16 +37,10 @@ function ChatRoomPage({}: ChatRoomPageProps) {
       direction={"column"}
       overflow={"hidden"}
       position={"relative"}
+      pt={"40px"}
     >
-      <Box
-        position={"absolute"}
-        top={"40px"}
-        left={"30px"}
-        onClick={handleClose}
-      >
-        <CloseIcon />
-      </Box>
-      <Box py={"40px"} textAlign={"center"}>
+      <BackButton />
+      <Box pb={"40px"} textAlign={"center"}>
         <Text
           fontSize={"18px"}
           lineHeight={"20px"}
