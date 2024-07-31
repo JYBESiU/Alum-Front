@@ -1,13 +1,15 @@
 import { News } from "@/types/news";
-import { news1 } from "@/utils/dummy";
+import useSWR from "swr";
 
-export function useNews(newsId: number) {
-  // const { data, ...rest } = useSWR<{news: News[]}>(
-  //   `/chat/chatrooms`
-  // );
+export function useNews(theme?: number) {
+  const { data, ...rest } = useSWR<News[]>(
+    theme === undefined
+      ? "/news/recommend"
+      : `/news/recommend?theme=${theme}`
+  );
 
   return {
-    news: news1,
-    // ...rest,
+    news: data,
+    ...rest,
   };
 }

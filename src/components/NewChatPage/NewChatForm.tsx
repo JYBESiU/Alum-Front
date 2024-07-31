@@ -15,6 +15,7 @@ import {
 import {
   Box,
   Button,
+  Center,
   Flex,
   Input,
   Spinner,
@@ -57,7 +58,7 @@ function NewChatForm({}: NewChatFormProps) {
   };
 
   const handleStartClick = async () => {
-    if (isLoading) return;
+    if (isLoading || isDisabled) return;
 
     setIsLoading(true);
 
@@ -66,16 +67,11 @@ function NewChatForm({}: NewChatFormProps) {
       airole: aiRole,
       chatsubject: chatSubject,
     };
-    // const { data } = await axios.post(
-    //   "/chat/entry",
-    //   payload
-    // );
-    // Router.push(`/chatRoom/${data.chatroomId}`);
-
-    setTimeout(() => {
-      Router.push(`/chatRoom/1`);
-      setIsLoading(false);
-    }, 1000);
+    const { data } = await axios.post(
+      "/chat/entry",
+      payload
+    );
+    Router.push(`/chatRoom/${data.chatroomId}`);
 
     setIsLoading(false);
   };
@@ -192,11 +188,10 @@ function NewChatForm({}: NewChatFormProps) {
         </Flex>
       </Box>
 
-      <Button
+      <Center
         w={"100%"}
         h={"56px"}
-        isDisabled={isDisabled}
-        bg={primaryColor}
+        bg={isDisabled ? "#FF6B004D" : primaryColor}
         borderRadius={"16px"}
         color={"white"}
         onClick={handleStartClick}
@@ -206,7 +201,7 @@ function NewChatForm({}: NewChatFormProps) {
         ) : (
           "대화 시작"
         )}
-      </Button>
+      </Center>
     </Box>
   );
 }

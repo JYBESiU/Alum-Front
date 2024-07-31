@@ -1,11 +1,17 @@
-import { useNews } from "@/hooks";
 import { CloseIcon } from "@/svg";
-import { Box, Text, useDisclosure } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Text,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import VoicePalyer from "./VoicePalyer";
 import { useState } from "react";
 import QuizButton from "./QuizButton";
 import QuizModal from "./QuizModal";
+import BackButton from "../BackButton";
+import { useNews } from "@/hooks/useNews";
 
 export interface NewsPageProps {}
 
@@ -14,13 +20,14 @@ function NewsPage({}: NewsPageProps) {
   const { query } = router;
   const newsId = Number(query.newsId);
 
-  const { news } = useNews(newsId);
+  const { news: newslist } = useNews(newsId);
+  const news = newslist?.[0];
 
   const [isQuizShow, setIsQuizShow] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleClose = () => {
-    router.push("/listening");
+    router.back();
   };
 
   const handleQuizModalOpen = () => {
@@ -28,24 +35,26 @@ function NewsPage({}: NewsPageProps) {
   };
 
   return (
-    <Box h={"100%"} px={"30px"} position={"relative"}>
-      <Box
-        position={"absolute"}
-        top={"40px"}
-        left={"30px"}
-        onClick={handleClose}
-      >
-        <CloseIcon />
-      </Box>
-      <Box py={"40px"} textAlign={"center"} mb={"30px"}>
+    <Box
+      h={"100%"}
+      pt={"40px"}
+      px={"30px"}
+      position={"relative"}
+    >
+      <BackButton />
+      <Center pb={"40px"} textAlign={"center"} mb={"30px"}>
         <Text
           fontSize={"18px"}
           lineHeight={"20px"}
           fontWeight={600}
+          maxW={"75%"}
+          overflow={"hidden"}
+          whiteSpace={"nowrap"}
+          textOverflow={"ellipsis"}
         >
-          {news.title}
+          {news?.title}
         </Text>
-      </Box>
+      </Center>
 
       <Box px={"12px"} mb={"24px"}>
         <Box
@@ -53,7 +62,7 @@ function NewsPage({}: NewsPageProps) {
           height={"234px"}
           borderRadius={"15px 15px 0 0"}
           backgroundSize={"cover"}
-          backgroundImage={news.imageUrl}
+          backgroundImage={news?.imageUrl}
         />
         <Box
           width={"100%"}
@@ -63,13 +72,13 @@ function NewsPage({}: NewsPageProps) {
           borderRadius={"0 0 15px 15px"}
         >
           <Text fontSize={"14px"} textAlign={"center"}>
-            {news.summary}
+            {news?.summary}
           </Text>
         </Box>
       </Box>
 
       <VoicePalyer
-        voiceUrl={news.voiceUrl}
+        voiceUrl={news?.voiceUrl || ""}
         setIsQuizShow={setIsQuizShow}
       />
 
@@ -81,9 +90,14 @@ function NewsPage({}: NewsPageProps) {
         <QuizModal
           isOpen={isOpen}
           onClose={onClose}
-          question={news.question}
-          choices={news.choices}
-          answer={news.answer}
+          question={news?.question}
+          choices={[
+            news?.choice1,
+            news?.choice2,
+            news?.choice3,
+            news?.choice4,
+          ]}
+          answer={news?.answer}
         />
       )}
     </Box>

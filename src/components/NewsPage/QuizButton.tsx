@@ -9,7 +9,7 @@ function QuizButton({ onClick }: QuizButtonProps) {
   return (
     <Center
       w={"100%"}
-      h={"46px"}
+      h={"56px"}
       border={"1px solid"}
       borderColor={primaryColor}
       boxShadow={cardShadow}
@@ -18,11 +18,11 @@ function QuizButton({ onClick }: QuizButtonProps) {
       bg={"white"}
     >
       <Text
-        fontSize={"22px"}
-        fontWeight={700}
+        fontSize={"16px"}
+        fontWeight={600}
         color={primaryColor}
       >
-        퀴즈 풀기
+        문제 풀기
       </Text>
     </Center>
   );

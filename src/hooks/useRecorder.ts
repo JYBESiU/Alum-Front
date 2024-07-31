@@ -1,8 +1,9 @@
 import { useState, useRef } from "react";
 import { uploadToS3 } from "../utils";
-import axios from "axios";
 
-export const useRecorder = () => {
+export const useRecorder = (
+  handleAfterUpload: (payload: object) => Promise<void>
+) => {
   const [isRecording, setIsRecording] =
     useState<boolean>(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(
@@ -34,7 +35,10 @@ export const useRecorder = () => {
         }
       );
       await uploadToS3(file, file.name);
-      // await axios.post("/api/stt");
+      handleAfterUpload({
+        audioUrl: `https://kr.object.ncloudstorage.com/message-audio/${file.name}`,
+        audioFilename: file.name,
+      });
 
       audioChunksRef.current = [];
     };

@@ -1,13 +1,37 @@
 import { useRecorder } from "@/hooks";
 import { MicBigColorIcon, MicBigIcon } from "@/svg";
+import { Message } from "@/types/message";
 import { recordingBG } from "@/utils/colors";
 import { Flex } from "@chakra-ui/react";
+import axios from "axios";
+import { KeyedMutator } from "swr";
 
-export interface RecordingButtonProps {}
+export interface RecordingButtonProps {
+  mutate: KeyedMutator<Message[]>;
+  chatroomId: number;
+}
 
-function RecordingButton({}: RecordingButtonProps) {
+function RecordingButton({
+  mutate,
+  chatroomId,
+}: RecordingButtonProps) {
+  const handleAfterUpload = async (payload: object) => {
+    const { data } = await axios.post("/chat/stt", {
+      chatroomId,
+      ...payload,
+    });
+    mutate();
+
+    const messageId = data.id;
+
+    await axios.post("/chat/reply", {
+      messageId,
+    });
+    mutate();
+  };
+
   const { isRecording, startRecording, stopRecording } =
-    useRecorder();
+    useRecorder(handleAfterUpload);
 
   return (
     <Flex
@@ -35,19 +59,6 @@ function RecordingButton({}: RecordingButtonProps) {
       >
         {isRecording ? <MicBigColorIcon /> : <MicBigIcon />}
       </Flex>
-
-      {/* {isRecording && (
-        <Text
-          position={"absolute"}
-          fontSize={"15px"}
-          color={chatFontColor}
-          bottom={"104px"}
-          left={"50%"}
-          transform={"translateX(-50%)"}
-        >
-          대답 듣는 중...
-        </Text>
-      )} */}
     </Flex>
   );
 }

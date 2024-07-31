@@ -3,13 +3,12 @@ import { chatroom1, chatroom2 } from "@/utils/dummy";
 import useSWR from "swr";
 
 export function useChatList() {
-  // const { data, ...rest } = useSWR<{chatrooms: ChatRoom[]}>(
-  //   `/chat/chatrooms`
-  // );
+  const { data, ...rest } =
+    useSWR<ChatRoom[]>(`/chat/chatrooms`);
 
   return {
     chatRooms: data,
-    // ...rest,
+    ...rest,
   };
 }
 

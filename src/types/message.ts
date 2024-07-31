@@ -1,10 +1,11 @@
 export type Message = {
   id: number;
   isUser: boolean;
+  isFeedback?: boolean;
   content: string;
   feedback?: string;
-  userId?: number;
-  url?: string;
+  voiceUrl?: string;
+  chatroom?: ChatRoom;
 };
 
 export type ChatRoom = {

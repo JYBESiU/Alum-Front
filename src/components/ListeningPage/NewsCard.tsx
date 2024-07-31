@@ -24,13 +24,15 @@ function NewsCard({ news }: NewsCardProps) {
       />
       <Flex
         h={"40px"}
-        px={"8px"}
+        px={"12px"}
         pb={"2px"}
         overflow={"hidden"}
         bg={"white"}
         align={"center"}
       >
         <Text
+          w={"100%"}
+          overflow={"hidden"}
           fontSize={"14px"}
           fontWeight={400}
           color={fontBlack}

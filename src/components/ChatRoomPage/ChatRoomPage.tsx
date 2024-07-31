@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { useChatRoomMessage } from "@/hooks";
 import ChatMessage from "./ChatMessage";
 import { useRef } from "react";
-import { CloseIcon } from "@/svg";
+import BackButton from "../BackButton";
 
 export interface ChatRoomPageProps {}
 
@@ -16,7 +16,9 @@ function ChatRoomPage({}: ChatRoomPageProps) {
 
   const chatroomId = Number(query.chatRoomId);
 
-  const { chatRoom } = useChatRoomMessage(chatroomId);
+  const { messages, mutate, isLoading } =
+    useChatRoomMessage(chatroomId);
+  const chatroom = messages?.[0].chatroom;
 
   const handleVoicePlay = (url?: string) => {
     if (!playerRef.current) return;
@@ -26,32 +28,22 @@ function ChatRoomPage({}: ChatRoomPageProps) {
     playerRef.current.play();
   };
 
-  const handleClose = () => {
-    router.push("/talking");
-  };
-
   return (
     <Flex
       h={"100%"}
       direction={"column"}
       overflow={"hidden"}
       position={"relative"}
+      pt={"40px"}
     >
-      <Box
-        position={"absolute"}
-        top={"40px"}
-        left={"30px"}
-        onClick={handleClose}
-      >
-        <CloseIcon />
-      </Box>
-      <Box py={"40px"} textAlign={"center"}>
+      <BackButton />
+      <Box pb={"40px"} textAlign={"center"}>
         <Text
           fontSize={"18px"}
           lineHeight={"20px"}
           fontWeight={600}
         >
-          {chatRoom.title}
+          {chatroom?.title}
         </Text>
       </Box>
       <Box
@@ -60,15 +52,28 @@ function ChatRoomPage({}: ChatRoomPageProps) {
         py={"34px"}
         overflow={"scroll"}
       >
-        {chatRoom.messages.map((message) => (
+        {messages?.map((message) => (
           <ChatMessage
             key={message.id}
             message={message}
             handleVoicePlay={handleVoicePlay}
           />
         ))}
+        {!messages?.at(-1)?.isUser && (
+          <ChatMessage
+            isDummy
+            message={{
+              id: 0,
+              isUser: true,
+              content: "말하기 버튼을 눌러주세요",
+            }}
+          />
+        )}
       </Box>
-      <RecordingButton />
+      <RecordingButton
+        mutate={mutate}
+        chatroomId={chatroomId}
+      />
       <audio id="voicePlayer" src="" ref={playerRef} />
     </Flex>
   );
