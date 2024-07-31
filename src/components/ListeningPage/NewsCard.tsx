@@ -2,6 +2,7 @@ import { News } from "@/types/news";
 import { fontBlack } from "@/utils/colors";
 import { Box, Flex, Text } from "@chakra-ui/react";
 import Image from "next/image";
+import Router from "next/router";
 
 export interface NewsCardProps {
   news: News;
@@ -14,6 +15,7 @@ function NewsCard({ news }: NewsCardProps) {
       overflow={"hidden"}
       borderRadius={"10px"}
       mb={"24px"}
+      onClick={() => Router.push(`/news/${news.id}`)}
     >
       <Box
         width={"100%"}

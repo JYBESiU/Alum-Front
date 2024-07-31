@@ -17,7 +17,6 @@ function ListeningPage({}: ListeningPageProps) {
     <Box
       h={"100%"}
       pt={"48px"}
-      // pb={"12px"}
       position={"relative"}
       overflow={"hidden"}
     >
