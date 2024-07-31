@@ -12,7 +12,7 @@ function NotesPage({}: NotesPageProps) {
       gap={0}
       pt={"40px"}
       position={"relative"}
-      px={"44px"}
+      px={"38px"}
     >
       <BackButton />
       <Text
