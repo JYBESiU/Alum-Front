@@ -135,8 +135,8 @@ function QuizModal({
   const WrongComponent = (
     <Center h={"100%"} flexDirection={"column"} gap={"0"}>
       <Image
-        src={"/images/correct.png"}
-        alt={"correct"}
+        src={"/images/wrong.png"}
+        alt={"wrong"}
         width={128}
         height={128}
       />
