@@ -1,3 +1,4 @@
+import { useRecentNews } from "@/hooks/useRecentNews";
 import {
   fontBlack,
   fontGray,
@@ -5,20 +6,27 @@ import {
 } from "@/utils/colors";
 import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import styled from "@emotion/styled";
+import NewsCard from "./NewsCard";
 
 export interface ListeningPageProps {}
 
 function ListeningPage({}: ListeningPageProps) {
+  const { news } = useRecentNews();
+
   return (
     <Box
       h={"100%"}
-      px={"35px"}
       pt={"48px"}
-      pb={"16px"}
+      // pb={"12px"}
       position={"relative"}
       overflow={"hidden"}
     >
-      <Box w={"100%"} overflow={"scroll"}>
+      <Box
+        px={"35px"}
+        w={"100%"}
+        h={"100%"}
+        overflow={"scroll"}
+      >
         <Text
           fontWeight={600}
           fontSize={"36px"}
@@ -97,6 +105,10 @@ function ListeningPage({}: ListeningPageProps) {
         >
           오늘의 추천뉴스
         </Text>
+
+        {news.map((news) => (
+          <NewsCard key={news.id} news={news} />
+        ))}
       </Box>
     </Box>
   );
