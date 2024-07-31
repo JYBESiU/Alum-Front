@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 import { useChatRoomMessage } from "@/hooks";
 import ChatMessage from "./ChatMessage";
 import { useRef } from "react";
-import { CloseIcon } from "@/svg";
 import BackButton from "../BackButton";
 
 export interface ChatRoomPageProps {}
@@ -17,7 +16,9 @@ function ChatRoomPage({}: ChatRoomPageProps) {
 
   const chatroomId = Number(query.chatRoomId);
 
-  const { chatRoom } = useChatRoomMessage(chatroomId);
+  const { messages, mutate, isLoading } =
+    useChatRoomMessage(chatroomId);
+  const chatroom = messages?.[0].chatroom;
 
   const handleVoicePlay = (url?: string) => {
     if (!playerRef.current) return;
@@ -25,10 +26,6 @@ function ChatRoomPage({}: ChatRoomPageProps) {
     playerRef.current.pause();
     playerRef.current.src = url || "";
     playerRef.current.play();
-  };
-
-  const handleClose = () => {
-    router.push("/talking");
   };
 
   return (
@@ -46,7 +43,7 @@ function ChatRoomPage({}: ChatRoomPageProps) {
           lineHeight={"20px"}
           fontWeight={600}
         >
-          {chatRoom.title}
+          {chatroom?.title}
         </Text>
       </Box>
       <Box
@@ -55,15 +52,28 @@ function ChatRoomPage({}: ChatRoomPageProps) {
         py={"34px"}
         overflow={"scroll"}
       >
-        {chatRoom.messages.map((message) => (
+        {messages?.map((message) => (
           <ChatMessage
             key={message.id}
             message={message}
             handleVoicePlay={handleVoicePlay}
           />
         ))}
+        {!messages?.at(-1)?.isUser && (
+          <ChatMessage
+            isDummy
+            message={{
+              id: 0,
+              isUser: true,
+              content: "말하기 버튼을 눌러주세요",
+            }}
+          />
+        )}
       </Box>
-      <RecordingButton />
+      <RecordingButton
+        mutate={mutate}
+        chatroomId={chatroomId}
+      />
       <audio id="voicePlayer" src="" ref={playerRef} />
     </Flex>
   );

@@ -5,12 +5,14 @@ import { Box, Flex, Text } from "@chakra-ui/react";
 
 export interface ChatMessageProps {
   message: Message;
-  handleVoicePlay: (url?: string) => void;
+  handleVoicePlay?: (url?: string) => void;
+  isDummy?: boolean;
 }
 
 function ChatMessage({
   message,
   handleVoicePlay,
+  isDummy = false,
 }: ChatMessageProps) {
   const isUser = message.isUser;
 
@@ -28,13 +30,23 @@ function ChatMessage({
         bg={isUser ? "white" : "#E4E7EB"}
         borderRadius={"14px"}
       >
-        <Text color={isUser ? fontBlack : chatFontColor}>
+        <Text
+          color={
+            isDummy
+              ? "#b3b3b3"
+              : isUser
+              ? fontBlack
+              : chatFontColor
+          }
+        >
           {message.content}
         </Text>
         {!isUser && (
           <Box
             mt={"8px"}
-            onClick={() => handleVoicePlay(message.url)}
+            onClick={() =>
+              handleVoicePlay?.(message.voiceUrl)
+            }
           >
             <VoiceIcon />
           </Box>
