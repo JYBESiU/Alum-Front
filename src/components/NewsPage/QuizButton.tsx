@@ -1,9 +1,11 @@
 import { cardShadow, primaryColor } from "@/utils/colors";
 import { Center, Text } from "@chakra-ui/react";
 
-export interface QuizButtonProps {}
+export interface QuizButtonProps {
+  onClick: VoidFunction;
+}
 
-function QuizButton({}: QuizButtonProps) {
+function QuizButton({ onClick }: QuizButtonProps) {
   return (
     <Center
       w={"100%"}
@@ -12,6 +14,7 @@ function QuizButton({}: QuizButtonProps) {
       borderColor={primaryColor}
       boxShadow={cardShadow}
       borderRadius={"20px"}
+      onClick={onClick}
     >
       <Text
         fontSize={"22px"}

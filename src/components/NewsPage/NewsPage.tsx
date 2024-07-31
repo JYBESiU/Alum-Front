@@ -1,10 +1,11 @@
 import { useNews } from "@/hooks";
 import { CloseIcon } from "@/svg";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, useDisclosure } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import VoicePalyer from "./VoicePalyer";
 import { useState } from "react";
 import QuizButton from "./QuizButton";
+import QuizModal from "./QuizModal";
 
 export interface NewsPageProps {}
 
@@ -16,9 +17,14 @@ function NewsPage({}: NewsPageProps) {
   const { news } = useNews(newsId);
 
   const [isQuizShow, setIsQuizShow] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleClose = () => {
     router.push("/listening");
+  };
+
+  const handleQuizModalOpen = () => {
+    onOpen();
   };
 
   return (
@@ -67,7 +73,17 @@ function NewsPage({}: NewsPageProps) {
         setIsQuizShow={setIsQuizShow}
       />
 
-      {isQuizShow && <QuizButton />}
+      {isQuizShow && (
+        <QuizButton onClick={handleQuizModalOpen} />
+      )}
+
+      <QuizModal
+        isOpen={isOpen}
+        onClose={onClose}
+        question={news.question}
+        choices={news.choices}
+        answer={news.answer}
+      />
     </Box>
   );
 }

@@ -1,3 +1,5 @@
+import { News } from "@/types/news";
+
 export function useNews(newsId: number) {
   // const { data, ...rest } = useSWR<{news: News[]}>(
   //   `/chat/chatrooms`
@@ -9,7 +11,7 @@ export function useNews(newsId: number) {
   };
 }
 
-const news1 = {
+const news1: News = {
   id: 1,
   title: "[속보] 티몬·위메프, 법원에 기업회생 신청",
   summary:
@@ -22,4 +24,14 @@ const news1 = {
     "https://image.zdnet.co.kr/2024/07/27/d973bf4bdbaaef11f27f58ebb54729a1-watermark.jpg",
   voiceUrl:
     "https://kr.object.ncloudstorage.com/message-audio/sampleaudio.mp3",
+  question:
+    "티몬과 위메프가 2024년 7월 29일 법원에 신청한 것은?",
+  choices: [
+    "새로운 제품 출시",
+    "기업회생",
+    "광고 캠페인",
+    "직원 채용",
+    "할인 행사",
+  ],
+  answer: "기업회생",
 };
