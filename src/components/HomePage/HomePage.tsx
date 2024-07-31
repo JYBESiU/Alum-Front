@@ -6,6 +6,7 @@ import {
 import {
   Box,
   Button,
+  Center,
   Flex,
   Input,
   Text,
@@ -33,7 +34,7 @@ function HomePage({}: HomePageProps) {
   };
 
   const handleLoginClick = () => {
-    Router.push("/talking");
+    if (!isDisabled) Router.push("/talking");
   };
 
   return (
@@ -83,17 +84,16 @@ function HomePage({}: HomePageProps) {
         mb={"80px"}
       />
 
-      <Button
+      <Center
         borderRadius={"100px"}
         w={"100%"}
         h={"50px"}
-        bg={primaryColor}
-        isDisabled={isDisabled}
+        bg={isDisabled ? "#D9D9D9" : primaryColor}
         color={"white"}
         onClick={handleLoginClick}
       >
         로그인
-      </Button>
+      </Center>
     </Box>
   );
 }
