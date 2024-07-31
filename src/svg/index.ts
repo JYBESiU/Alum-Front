@@ -14,6 +14,7 @@ export { default as DialogIcon } from "./dialog.svg";
 export { default as VoiceIcon } from "./voice.svg";
 export { default as PlayIcon } from "./play.svg";
 export { default as PauseIcon } from "./pause.svg";
+export { default as HomeIcon } from "./home.svg";
 
 export { default as ChatIcon } from "./chat.svg";
 export { default as ChatColorIcon } from "./chat_color.svg";

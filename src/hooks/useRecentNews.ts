@@ -24,6 +24,16 @@ const news1 = {
     "https://image.zdnet.co.kr/2024/07/27/d973bf4bdbaaef11f27f58ebb54729a1-watermark.jpg",
   voiceUrl:
     "https://kr.object.ncloudstorage.com/message-audio/audio-1722368134072.mp3",
+  question:
+    "티몬과 위메프가 2024년 7월 29일 법원에 신청한 것은?",
+  choices: [
+    "새로운 제품 출시",
+    "기업회생",
+    "광고 캠페인",
+    "직원 채용",
+    "할인 행사",
+  ],
+  answer: "기업회생",
 };
 
 const news2 = {
@@ -39,6 +49,16 @@ const news2 = {
     "https://image.zdnet.co.kr/2024/07/27/d973bf4bdbaaef11f27f58ebb54729a1-watermark.jpg",
   voiceUrl:
     "https://kr.object.ncloudstorage.com/message-audio/audio-1722368134072.mp3",
+  question:
+    "티몬과 위메프가 2024년 7월 29일 법원에 신청한 것은?",
+  choices: [
+    "새로운 제품 출시",
+    "기업회생",
+    "광고 캠페인",
+    "직원 채용",
+    "할인 행사",
+  ],
+  answer: "기업회생",
 };
 
 const data = [news1, news2];

@@ -77,13 +77,15 @@ function NewsPage({}: NewsPageProps) {
         <QuizButton onClick={handleQuizModalOpen} />
       )}
 
-      <QuizModal
-        isOpen={isOpen}
-        onClose={onClose}
-        question={news.question}
-        choices={news.choices}
-        answer={news.answer}
-      />
+      {isOpen && (
+        <QuizModal
+          isOpen={isOpen}
+          onClose={onClose}
+          question={news.question}
+          choices={news.choices}
+          answer={news.answer}
+        />
+      )}
     </Box>
   );
 }
