@@ -1,4 +1,5 @@
 import { ChatRoom } from "@/types/message";
+import { message1, message2 } from "@/utils/dummy";
 import useSWR from "swr";
 
 export function useChatRoomMessage(chatroomId: number) {
@@ -11,20 +12,6 @@ export function useChatRoomMessage(chatroomId: number) {
     // ...rest,
   };
 }
-
-const message1 = {
-  id: 10,
-  isUser: false,
-  content: "여기 소금빵 있나요?",
-  url: "https://kr.object.ncloudstorage.com/message-audio/audio-1722332910598.mp3",
-};
-const message2 = {
-  id: 11,
-  isUser: true,
-  content:
-    "저기 보이시는 초코빵 left에 있어요. 오늘 fifteen percent 할인 합니다.",
-  url: "https://kr.object.ncloudstorage.com/message-audio/audio-1722332910598.mp3",
-};
 
 const data = {
   id: 1,
