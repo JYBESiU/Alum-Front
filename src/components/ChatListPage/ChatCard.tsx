@@ -31,7 +31,7 @@ function ChatCard({ chatroom }: ChatCardProps) {
       }
     >
       <Image
-        src={"/images/bread.png"}
+        src={imageList[chatroom.id % 3]}
         alt={"bread"}
         width={60}
         height={60}
@@ -74,3 +74,9 @@ function ChatCard({ chatroom }: ChatCardProps) {
 }
 
 export default ChatCard;
+
+const imageList = [
+  "/images/bread.png",
+  "/images/heart.png",
+  "/images/present.png",
+];

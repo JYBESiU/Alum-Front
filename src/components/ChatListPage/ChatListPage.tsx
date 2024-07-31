@@ -55,7 +55,7 @@ function ChatListPage({}: ChatListPageProps) {
         overflow={"scroll"}
         gap={"16px"}
       >
-        {chatRooms.map((chatroom) => (
+        {chatRooms?.map((chatroom) => (
           <ChatCard key={chatroom.id} chatroom={chatroom} />
         ))}
         <Box
