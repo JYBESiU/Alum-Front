@@ -2,6 +2,8 @@ import { useNews } from "@/hooks";
 import { CloseIcon } from "@/svg";
 import { Box, Text } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import VoicePalyer from "./VoicePalyer";
+import { useState } from "react";
 
 export interface NewsPageProps {}
 
@@ -11,6 +13,8 @@ function NewsPage({}: NewsPageProps) {
   const newsId = Number(query.newsId);
 
   const { news } = useNews(newsId);
+
+  const [isQuizShow, setIsQuizShow] = useState(false);
 
   const handleClose = () => {
     router.push("/listening");
@@ -26,7 +30,7 @@ function NewsPage({}: NewsPageProps) {
       >
         <CloseIcon />
       </Box>
-      <Box py={"40px"} textAlign={"center"} mb={"70px"}>
+      <Box py={"40px"} textAlign={"center"} mb={"30px"}>
         <Text
           fontSize={"18px"}
           lineHeight={"20px"}
@@ -36,7 +40,7 @@ function NewsPage({}: NewsPageProps) {
         </Text>
       </Box>
 
-      <Box px={"12px"}>
+      <Box px={"12px"} mb={"24px"}>
         <Box
           width={"100%"}
           height={"234px"}
@@ -48,6 +52,7 @@ function NewsPage({}: NewsPageProps) {
           width={"100%"}
           py={"20px"}
           bg={"white"}
+          px={"8px"}
           borderRadius={"0 0 15px 15px"}
         >
           <Text fontSize={"14px"} textAlign={"center"}>
@@ -55,6 +60,11 @@ function NewsPage({}: NewsPageProps) {
           </Text>
         </Box>
       </Box>
+
+      <VoicePalyer
+        voiceUrl={news.voiceUrl}
+        setIsQuizShow={setIsQuizShow}
+      />
     </Box>
   );
 }

@@ -29,7 +29,6 @@ export const S3 = new AWS.S3({
     secretAccessKey: process.env.NEXT_PUBLIC_SECRET_KEY_ID!,
   },
 });
-console.log(process.env.NEXT_PUBLIC_ACCESS_KEY_ID);
 
 S3.putBucketCors(params);
 

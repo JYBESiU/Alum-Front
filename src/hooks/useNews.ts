@@ -21,5 +21,5 @@ const news1 = {
   imageUrl:
     "https://image.zdnet.co.kr/2024/07/27/d973bf4bdbaaef11f27f58ebb54729a1-watermark.jpg",
   voiceUrl:
-    "https://kr.object.ncloudstorage.com/message-audio/audio-1722368134072.mp3",
+    "https://kr.object.ncloudstorage.com/message-audio/sampleaudio.mp3",
 };
