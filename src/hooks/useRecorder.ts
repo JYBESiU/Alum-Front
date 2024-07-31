@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import { uploadToS3 } from "../utils";
+import axios from "axios";
 
 export const useRecorder = () => {
   const [isRecording, setIsRecording] =
@@ -22,7 +23,7 @@ export const useRecorder = () => {
 
     mediaRecorderRef.current.onstop = async () => {
       const audioBlob = new Blob(audioChunksRef.current, {
-        type: "audio/wav",
+        type: "audio/mp3",
       });
       const file = new File(
         [audioBlob],
@@ -33,6 +34,8 @@ export const useRecorder = () => {
         }
       );
       await uploadToS3(file, file.name);
+      // await axios.post("/api/stt");
+
       audioChunksRef.current = [];
     };
 

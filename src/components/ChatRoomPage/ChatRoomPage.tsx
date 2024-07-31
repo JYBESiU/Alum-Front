@@ -3,7 +3,7 @@ import RecordingButton from "./RecordingButton";
 import { useRouter } from "next/router";
 import { useChatRoomMessage } from "@/hooks";
 import ChatMessage from "./ChatMessage";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { CloseIcon } from "@/svg";
 
 export interface ChatRoomPageProps {}
@@ -13,8 +13,6 @@ function ChatRoomPage({}: ChatRoomPageProps) {
   const { query } = router;
 
   const playerRef = useRef<HTMLAudioElement>(null);
-
-  useEffect(() => {}, []);
 
   const chatroomId = Number(query.chatRoomId);
 

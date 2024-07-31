@@ -17,7 +17,7 @@ function TalkingPage({}: TalkingPageProps) {
     <Box
       h={"100%"}
       px={"35px"}
-      pt={"50px"}
+      pt={"48px"}
       position={"relative"}
     >
       <Text
