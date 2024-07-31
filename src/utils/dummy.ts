@@ -10,7 +10,7 @@ export const news1 = {
   imageUrl:
     "https://s3-alpha-sig.figma.com/img/5a27/dd52/f6b7ba2fce943ac7facdeb8e8e195d31?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=PMERieXbs7Xy3M-WPzRE4Q0NHccKHQhgIO~f2I0LIH5udrlWltFyZVAFTCxX2~mmKwfQEreOy1ASMuZdS4H27QuFEhSt3kK~xzlQ13wQKKi7bJcXUZc1S9jYl5UnAVHvTcV85O-R6J874VK0sWuFvn4h8lVNm-15T1iiiZ5jM5wdF3WYdFEmADdXkU-YhkL8CV8PRb45J~gb4ApmcIAAEDDkgwzqxFVXYo1ycQPKWUo9XdXaMhEdFHQn-ogoNvlb3q4d2QaPzymt3eNYSFCcwTaind740b-1Yu6yG2WA2LGu~FcyRRaz-2KeTO46-AJQrakS64HfyQUbtY-xwBJY0Q__",
   voiceUrl:
-    "https://kr.object.ncloudstorage.com/message-audio/audio-1722368134072.mp3",
+    "https://kr.object.ncloudstorage.com/message-audio/sampleaudio.mp3",
   question:
     "티몬과 위메프가 2024년 7월 29일 법원에 신청한 것은?",
   choices: [
@@ -35,7 +35,7 @@ export const news2 = {
   imageUrl:
     "https://s3-alpha-sig.figma.com/img/f5a9/9dff/a0dfd67f18709d8711556d5ee221b249?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KWjTxBgUSlyxb5qHbWTFCaBtjz~N8RZ3NjUDasNBQtw1ZrugfXjI77uLAY3m3aEgMto9Uh2noxCgGN9aK-HSMKVKopmyzt1KiRX7qztKf9yQ0HVFbbITc50M481E~-pQFXMBv5WuglIPbHvApBTwc9DzcDkE153E3rc0LjvnK1KKanXnwSnHdlqUtGTuN9o06CaYSNnufOxKFkIP8mxGkBYyIkbb7UUkM24aQcxFQQthJl623CAqNbdY~qZK3lodCiUzA224IcHtcPGjKual53Tb1vDsuXd3vRPmvvqAasciAkagcvI1woyOZOiLOEPOH-FkrdGxKzbE7ft59LjSaA__",
   voiceUrl:
-    "https://kr.object.ncloudstorage.com/message-audio/audio-1722368134072.mp3",
+    "https://kr.object.ncloudstorage.com/message-audio/sampleaudio.mp3",
   question:
     "티몬과 위메프가 2024년 7월 29일 법원에 신청한 것은?",
   choices: [
@@ -61,7 +61,7 @@ export const news3 = {
   imageUrl:
     "https://s3-alpha-sig.figma.com/img/85df/60c1/242f58408f1334fc9076f21e8f181cc2?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ccEYhf3PACEc8pyngnihMAC05uyjRKPtSjHpcD-PLbPt4QQff6DdX0qv5VjH0R~oKzmiPmMN8wCG8hNrPExqwJmEGMZdTGNjsAOasWAwxVCFcISXGzvOEyh4glZljZNZ2GqAgauRbEA2m2GIXYXidspQ7osuO9ObbGgNYcLUo3NuKvTRY3qijwPvWZBNvN0xblpOQ1LIYLhzf-1cE~FVK0zWEU4CTLKMtWdKXCytnMESNFcDixOrTktqviqQ8QjgUAVMYIdzly2Q52055E7QYmjLI2uT3IduEU5dN~srw8PXfhaj3RB15f0uM5kFv--WmpVMCpfpoAUxTvyojZaAZg__",
   voiceUrl:
-    "https://kr.object.ncloudstorage.com/message-audio/audio-1722368134072.mp3",
+    "https://kr.object.ncloudstorage.com/message-audio/sampleaudio.mp3",
   question:
     "티몬과 위메프가 2024년 7월 29일 법원에 신청한 것은?",
   choices: [

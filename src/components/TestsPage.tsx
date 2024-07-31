@@ -40,7 +40,7 @@ function TestsPage({}: TestsPageProps) {
         fontSize={"14px"}
         fontWeight={400}
         color={fontGray}
-        mb={"80px"}
+        mb={"60px"}
       >
         말하기와 듣기 능력에 기반한
         <br />

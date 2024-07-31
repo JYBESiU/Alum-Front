@@ -41,7 +41,7 @@ function GoalsPage({}: GoalsPageProps) {
         chipText={"들으러 가기"}
       />
       <Card
-        image={"microphone"}
+        image={"memo"}
         subText="오답 정리 사용하기"
         text={"50음"}
         chipText={"사용하기"}
