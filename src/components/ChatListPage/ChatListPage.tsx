@@ -66,6 +66,7 @@ function ChatListPage({}: ChatListPageProps) {
           boxShadow={cardShadow}
           borderRadius={"20px"}
           textAlign={"center"}
+          bg={"white"}
           onClick={() => Router.push("/newChat")}
         >
           <Text

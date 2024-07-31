@@ -25,6 +25,7 @@ function ChatCard({ chatroom }: ChatCardProps) {
       py={"16px"}
       px={"20px"}
       gap={"18px"}
+      bg={"white"}
       onClick={() =>
         Router.push(`/chatRoom/${chatroom.id}`)
       }

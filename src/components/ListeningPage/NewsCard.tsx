@@ -1,7 +1,6 @@
 import { News } from "@/types/news";
 import { fontBlack } from "@/utils/colors";
 import { Box, Flex, Text } from "@chakra-ui/react";
-import Image from "next/image";
 import Router from "next/router";
 
 export interface NewsCardProps {

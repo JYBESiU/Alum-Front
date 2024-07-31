@@ -15,6 +15,7 @@ function QuizButton({ onClick }: QuizButtonProps) {
       boxShadow={cardShadow}
       borderRadius={"20px"}
       onClick={onClick}
+      bg={"white"}
     >
       <Text
         fontSize={"22px"}
