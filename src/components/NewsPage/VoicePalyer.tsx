@@ -47,6 +47,10 @@ function VoicePalyer({
       handleTimeUpdate
     );
     audioRef.current.addEventListener("ended", handleEnded);
+
+    return () => {
+      audioRef.current?.pause();
+    };
   }, [voiceUrl]);
 
   const handleTimeUpdate = () => {
@@ -63,7 +67,10 @@ function VoicePalyer({
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
       setDuration(audioRef.current.duration);
-      setTimeout(() => audioRef.current?.play(), 500);
+      setTimeout(() => {
+        audioRef.current?.play();
+        setIsPlaying(true);
+      }, 500);
     }
   };
 

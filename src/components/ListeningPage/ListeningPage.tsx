@@ -39,13 +39,14 @@ function ListeningPage({}: ListeningPageProps) {
           fontWeight={500}
           fontSize={"14px"}
           lineHeight={"20px"}
-          mb={"32px"}
+          mb={"28px"}
           color={fontGray}
         >
           뉴스 기사를 듣고 기사 내용에 관한 퀴즈를 풀어봐요.
         </Text>
 
         <Box
+          h={"120px"}
           p={"26px"}
           borderRadius={"20px"}
           bg={"rgba(255, 107, 0, 0.80)"}
