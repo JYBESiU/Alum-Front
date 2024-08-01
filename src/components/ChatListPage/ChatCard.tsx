@@ -43,6 +43,7 @@ function ChatCard({ chatroom }: ChatCardProps) {
           fontWeight={600}
           color={fontBlack}
           mb={"4px"}
+          overflow={"hidden"}
           whiteSpace={"nowrap"}
           textOverflow={"ellipsis"}
         >
